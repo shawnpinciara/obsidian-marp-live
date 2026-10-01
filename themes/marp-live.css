@@ -1,0 +1,204 @@
+/* @theme marp-live */
+
+/*
+ * Marp Live theme — "slate & cream" style.
+ * One theme, many per-slide layouts. Pick a layout with a spot directive:
+ *
+ *   <!-- _class: cover -->
+ *
+ * Layouts: (default) | cover | cover-line | title-band |
+ *          split-dark | split-line | diagonal | center (combinable)
+ */
+
+section {
+  width: 1280px;
+  height: 720px;
+  box-sizing: border-box;
+  position: relative;
+  padding: 64px 80px 64px;
+  background: #ffffff;
+  color: #3a3a3a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 27px;
+  line-height: 1.55;
+}
+
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 24px;
+  color: #1e3a4c;
+}
+
+h1 { font-size: 62px; }
+h2 { font-size: 46px; }
+h3 { font-size: 34px; }
+
+p { margin: 0 0 18px; }
+ul, ol { margin: 0 0 18px; padding-left: 1.4em; }
+li { margin-bottom: 8px; }
+a { color: #1e3a4c; }
+strong { color: #1e3a4c; }
+img { max-width: 100%; }
+blockquote {
+  margin: 0 0 18px;
+  padding: 12px 24px;
+  border-left: 6px solid #d8c4a5;
+  background: rgba(216, 196, 165, 0.15);
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85em;
+  background: rgba(0, 0, 0, 0.07);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+pre {
+  background: #333a4e;
+  color: #f2ede1;
+  padding: 24px 28px;
+  border-radius: 8px;
+  font-size: 20px;
+  line-height: 1.5;
+}
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; margin-bottom: 18px; }
+th, td { border: 1px solid #ccc; padding: 10px 18px; }
+th { background: #333a4e; color: #fff; font-family: Georgia, serif; }
+
+/* Page number (needs `paginate: true`) */
+section::after {
+  content: attr(data-marpit-pagination);
+  position: absolute;
+  right: 64px;
+  bottom: 26px;
+  font-size: 21px;
+  color: #999;
+  font-family: -apple-system, "Segoe UI", sans-serif;
+}
+
+footer {
+  position: absolute;
+  left: 80px;
+  bottom: 26px;
+  font-size: 21px;
+  color: #999;
+}
+
+/* ---------- cover: full cream, big ink title ---------- */
+section.cover {
+  background: #ece4d4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 320px;
+}
+section.cover h1 { font-size: 88px; color: #1e3a4c; }
+section.cover h2, section.cover p { color: #1e3a4c; }
+section.cover::after { color: #1e3a4c; }
+
+/* ---------- cover-line: cream + thin white diagonal stripe ---------- */
+section.cover-line {
+  background:
+    linear-gradient(12deg, transparent 0 58%, #ffffff 58% 59.4%, transparent 59.4%),
+    #ece4d4;
+  padding-top: 110px;
+}
+section.cover-line h1 {
+  border: 2px solid #b9b2a4;
+  padding: 56px 64px;
+  font-size: 72px;
+  color: #1e3a4c;
+  background: rgba(255, 255, 255, 0.25);
+}
+section.cover-line::after { color: #1e3a4c; }
+
+/* ---------- title-band: dark top band, light body ---------- */
+section.title-band {
+  background: #f6f6f6;
+  padding-top: 290px;
+}
+section.title-band h1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 52px 80px;
+  background: #333a4e;
+  color: #ffffff;
+  font-size: 58px;
+  min-height: 150px;
+}
+section.title-band h2, section.title-band p,
+section.title-band li { color: #444; }
+
+/* ---------- split-dark: dark left panel, light right ---------- */
+/* Pair with `![bg right:58%](photo)` for a photo on the right. */
+section.split-dark {
+  background: linear-gradient(to right, #333a4e 0 42%, #ffffff 42%);
+}
+section.split-dark h1, section.split-dark h2,
+section.split-dark p, section.split-dark li {
+  color: #f2ede1;
+  margin-right: 46%;
+}
+section.split-dark h1 { font-size: 54px; color: #ffffff; }
+section.split-dark::after { color: #f2ede1; }
+section.split-dark footer { color: #f2ede1; }
+
+/* ---------- split-line: dark left panel + sand diagonal accent ---------- */
+section.split-line {
+  background: linear-gradient(to right, #333a4e 0 470px, #f4f4f4 470px);
+}
+section.split-line::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 470px;
+  background: linear-gradient(11deg, transparent 0 68%, #d8c4a5 68% 69.2%, transparent 69.2%);
+}
+section.split-line > * { position: relative; }
+section.split-line h1, section.split-line h2,
+section.split-line p, section.split-line li {
+  color: #f2ede1;
+  margin-right: 56%;
+}
+section.split-line h1 { font-size: 54px; color: #ffffff; }
+section.split-line::after { color: #f2ede1; }
+
+/* ---------- diagonal: white + dark wedge bottom-right ---------- */
+section.diagonal {
+  background: linear-gradient(11deg, #ffffff 0 62%, #333a4e 62%);
+}
+section.diagonal h1 { font-size: 68px; color: #1e3a4c; }
+section.diagonal h2, section.diagonal p { color: #666; }
+section.diagonal::after { color: #ffffff; }
+
+/* ---------- center: vertically + horizontally centered ---------- */
+section.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+section.center h1 { font-size: 80px; }
+
+/* ---------- helpers (use with inline HTML) ---------- */
+.cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+}
+.card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 28px 34px;
+  color: #333;
+}
+.card h1, .card h2, .card h3, .card strong { color: #1e3a4c; }

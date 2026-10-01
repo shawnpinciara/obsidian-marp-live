@@ -63,9 +63,36 @@ Copy `manifest.json`, `main.js` and `styles.css` into `<vault>/.obsidian/plugins
 ## Settings
 
 - Local server port (default `3773`, auto-tries the next 20 if busy)
-- Marp theme: `default` / `gaia` / `uncover` (per-note override via `theme:` front-matter)
+- Marp theme: `marp-live` (bundled custom theme, default) / `default` / `gaia` / `uncover` (per-note override via `theme:` front-matter)
 - Allow HTML in Markdown
 - Auto-open browser on Present
+
+## The `marp-live` theme: one theme, many layouts
+
+The bundled theme (`themes/marp-live.css`, slate-navy + cream style) supports **different layouts per slide**. Pick one with a Marp *spot directive* (an HTML comment at the top of the slide — it applies to that slide only):
+
+```markdown
+---
+
+<!-- _class: split-dark -->
+
+# Dark panel slide
+
+---
+```
+
+| `_class`     | Look | Notes |
+| ------------ | ---- | ----- |
+| *(none)*     | White, ink serif titles | Default |
+| `cover`      | Full cream, huge title | Title slide |
+| `cover-line` | Cream + thin white diagonal stripe, boxed title | |
+| `title-band` | Dark top band with white title, light body | |
+| `split-dark` | Dark left panel + light right | Pair with `![bg right:58%](photo.jpg)` |
+| `split-line` | Dark left panel + sand diagonal accent | Same as above |
+| `diagonal`   | White + dark wedge bottom-right | |
+| `center`     | Centered content | Combinable: `<!-- _class: cover center -->` |
+
+Need `paginate: true` in the front-matter for page numbers. Two-column content uses the `.cols` helper with inline HTML (see `demo-marp-live.md`).
 
 ## How it works
 

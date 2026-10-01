@@ -1,4 +1,5 @@
 import { Marp } from "@marp-team/marp-core";
+import marpLiveCss from "../themes/marp-live.css";
 
 export interface RenderOptions {
   theme?: string;
@@ -13,7 +14,7 @@ export interface RenderResult {
   title: string;
 }
 
-const BUILTIN_THEMES = new Set(["default", "gaia", "uncover"]);
+const BUILTIN_THEMES = new Set(["default", "gaia", "uncover", "marp-live"]);
 
 export function normalizeMarkdown(src: string, theme: string): string {
   // Se la nota non ha front-matter Marp, iniettiamo le direttive minime.
@@ -29,6 +30,14 @@ export function renderDeck(src: string, opts: RenderOptions): RenderResult {
     html: opts.html ?? true,
     emoji: { shortcode: true, unicode: true } as never,
   });
+
+  // Tema custom bundled: sempre registrato nel themeSet così la direttiva
+  // `theme: marp-live` funziona anche se scritta a mano nel front-matter.
+  try {
+    marp.themeSet.add(marpLiveCss);
+  } catch {
+    /* tema non valido: si usano i built-in */
+  }
 
   if (opts.customCss && opts.customCss.trim()) {
     try {

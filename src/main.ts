@@ -12,7 +12,7 @@ interface MarpPresentaSettings {
 
 const DEFAULT_SETTINGS: MarpPresentaSettings = {
   port: 3773,
-  theme: "default",
+  theme: "marp-live",
   allowHtml: true,
   autoOpen: true,
 };
@@ -234,7 +234,7 @@ class MarpSettingTab extends PluginSettingTab {
       .setDesc("Temi built-in di @marp-team/marp-core. Usa front-matter `theme:` nella nota per override per-nota.")
       .addDropdown((d) =>
         d
-          .addOptions({ default: "default", gaia: "gaia", uncover: "uncover" })
+          .addOptions({ "marp-live": "marp-live (slate & cream)", default: "default", gaia: "gaia", uncover: "uncover" })
           .setValue(this.plugin.settings.theme)
           .onChange(async (v) => {
             this.plugin.settings.theme = v;
