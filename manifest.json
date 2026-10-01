@@ -1,0 +1,11 @@
+{
+  "id": "marp-live",
+  "name": "Marp Live",
+  "version": "0.1.0",
+  "minAppVersion": "1.4.0",
+  "description": "Present Markdown notes with Marp on a local server: fullscreen, one slide at a time, live reload.",
+  "author": "shawnpinciara",
+  "authorUrl": "https://github.com/marp-team/marp",
+  "fundingUrl": "",
+  "isDesktopOnly": true
+}

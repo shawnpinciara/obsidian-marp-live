@@ -1,0 +1,22 @@
+{
+  "name": "obsidian-marp-live",
+  "version": "0.1.0",
+  "description": "Obsidian plugin: present with Marp on a local server, fullscreen, one slide at a time, live reload.",
+  "main": "main.js",
+  "scripts": {
+    "dev": "node esbuild.config.mjs",
+    "build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production"
+  },
+  "keywords": ["obsidian", "marp", "slides", "presentation"],
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "esbuild": "0.20.2",
+    "obsidian": "latest",
+    "tslib": "2.6.2",
+    "typescript": "5.3.3"
+  },
+  "dependencies": {
+    "@marp-team/marp-core": "^4.1.0"
+  }
+}
